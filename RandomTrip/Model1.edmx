@@ -20,6 +20,7 @@
           <Property Name="URL_PHOTO" Type="nvarchar" MaxLength="4000" />
           <Property Name="ADRESSE" Type="nvarchar" MaxLength="4000" />
           <Property Name="WEBSITE" Type="nvarchar" MaxLength="1000" />
+          <Property Name="localisation" Type="geography" />
         </EntityType>
         <EntityContainer Name="masterModelStoreContainer">
           <EntitySet Name="Evenement" EntityType="Self.Evenement" Schema="dbo" store:Type="Tables" />
@@ -46,6 +47,7 @@
           <Property Name="URL_PHOTO" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="ADRESSE" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="WEBSITE" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="localisation" Type="Geography" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -56,6 +58,7 @@
           <EntitySetMapping Name="Evenement">
             <EntityTypeMapping TypeName="masterModel.Evenement">
               <MappingFragment StoreEntitySet="Evenement">
+                <ScalarProperty Name="localisation" ColumnName="localisation" />
                 <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
                 <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
                 <ScalarProperty Name="URL_PHOTO" ColumnName="URL_PHOTO" />

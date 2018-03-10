@@ -25,5 +25,6 @@ namespace RandomTrip
         public string URL_PHOTO { get; set; }
         public string ADRESSE { get; set; }
         public string WEBSITE { get; set; }
+        public System.Data.Entity.Spatial.DbGeography localisation { get; set; }
     }
 }

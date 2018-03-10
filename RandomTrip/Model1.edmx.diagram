@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="20ce4f3a20d846dd9cffaa2804f27c6d" Name="Diagram1">
-        <EntityTypeShape EntityType="masterModel.Evenement" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="masterModel.Evenement" Width="1.5" PointX="0.75" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

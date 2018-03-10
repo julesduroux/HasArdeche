@@ -5,15 +5,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.SqlServer.Types;
 
 using Google.Maps;
 using Google.Maps.Geocoding;
-
+using System.Data.Entity.Spatial;
+using System.Data.Entity.SqlServer;
 
 namespace RandomTrip
 {
     public partial class _Default : Page
     {
+
         System.Web.UI.WebControls.CheckBox Cbmatin;
         System.Web.UI.WebControls.CheckBox Cbmidi;
         System.Web.UI.WebControls.CheckBox Cbaprem;
@@ -84,14 +87,14 @@ namespace RandomTrip
                     using (var db = new masterEntities())
                     {
                         var query = from even in db.Evenement
-                                    where (even.LATITUDE != null) && (even.LATITUDE > 42) && (even.LATITUDE < 45) && (even.LONGITUDE > 2) && (even.LONGITUDE < 6) && "EVENEMENT".Equals(even.TYPE_EVENEMENT) && (even.URL_PHOTO != null)
+                                    where (even.LATITUDE != null) && (even.localisation.Distance(DbGeography.FromText("POINT(4.256584 44.4458645)")) < 10000) && "EVENEMENT".Equals(even.TYPE_EVENEMENT) && (even.URL_PHOTO != null)
                                     orderby Guid.NewGuid()
                                     select even;
 
                         var evenements = query.Take(3).ToList();
 
                         query = from even in db.Evenement
-                                    where (even.LATITUDE != null) && (even.LATITUDE > 42) && (even.LATITUDE < 45) && (even.LONGITUDE > 2) && (even.LONGITUDE < 6) && "RESTAURANT".Equals(even.TYPE_EVENEMENT)
+                                    where (even.LATITUDE != null) && (even.localisation.Distance(DbGeography.FromText("POINT(4.256584 44.4458645)")) < 5000) && "RESTAURANT".Equals(even.TYPE_EVENEMENT)
                                     orderby Guid.NewGuid()
                                     select even;
 
