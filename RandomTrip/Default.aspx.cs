@@ -11,6 +11,7 @@ using Google.Maps;
 using Google.Maps.Geocoding;
 using System.Data.Entity.Spatial;
 using System.Data.Entity.SqlServer;
+using Facebook;
 
 namespace RandomTrip
 {
@@ -59,6 +60,15 @@ namespace RandomTrip
             {
                 //Masque impression
                 printButton.Attributes.Add("style", "display: none");
+
+                var accessToken = "EAAFnVtghSZCwBAIFLZB13MYLZCTvp0NJ4V19Q6ZCZClDqrAVZCqJ2aBEuOCm87CSWZBXk7VD3OtN2yHLBT8KMsjMZBdO7lkHiZAyLZC63tZA9sbCHAVPNOUuheTZCUxiauMZCuMeD1lDmSuJqUeMWq12GZBe6b1gNph6vtTUFvtTzPv7RXbxYddOSZAZBZCmzZAqILMgwNvZCYZD";
+                var client = new FacebookClient(accessToken);
+                dynamic me = client.Get("/search?type=place&center=52.946758,-1.172882&distance=5000");
+                ///?ids={id1},{id2},{id3},...
+                dynamic categories = client.Get("fb_page_categories");
+
+                dynamic place = client.Get("/"+ me.data[0].id+ "?fields=location,website,link,picture,is_permanently_closed,hours,description,about,cover,category_list");
+
             }
             else
             {
